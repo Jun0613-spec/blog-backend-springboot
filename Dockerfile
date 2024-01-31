@@ -5,12 +5,12 @@
 
 # Stage 1: Build
 FROM maven:3.8.4 AS build
-WORKDIR /app
-COPY . /app
+WORKDIR /backend
+COPY . /backend
 RUN mvn clean package
 
 # Stage 2: Run
 FROM openjdk:17
 WORKDIR /app
-COPY --from=build /app/target/*.jar /app/app.jar
+COPY --from=build /backend/target/*.jar /backend/app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
