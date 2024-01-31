@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import com.jun.blog.dto.request.user.UpdateProfileImageRequestDto;
 import com.jun.blog.dto.request.user.UpdateUserNameRequestDto;
 import com.jun.blog.dto.response.ResponseDto;
-import com.jun.blog.dto.response.auth.SignUpResponseDto;
 import com.jun.blog.model.User;
 import com.jun.blog.repository.UserRepository;
 import com.jun.blog.service.UserService;

@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.Subselect;
-import org.hibernate.annotations.View;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
