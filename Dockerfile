@@ -1,14 +1,9 @@
-# FROM openjdk:17
-# ARG JAR_FILE=target/*.jar
-# COPY ${JAR_FILE} target/blog-0.0.1-SNAPSHOT.jar
-# ENTRYPOINT ["java", "-jar", "target/blog-0.0.1-SNAPSHOT.jar"]
-
-FROM maven:3.8.4 AS build
-WORKDIR /backend
+FROM maven:4-openjdk-17 AS build
 COPY . .
-RUN mvn clean package -Pprod -DskipTests
+RUN mvn clean package -DskipTests
 
 FROM openjdk:17
-WORKDIR /backend
-COPY --from=build target/*.jar blog-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java", "-jar", "blog-0.0.1-SNAPSHOT.jar"]
+COPY --from=build /target/blog-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8000
+ADD target/blog-0.0.1-SNAPSHOT.jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
