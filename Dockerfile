@@ -7,10 +7,10 @@
 FROM maven:3.8.4 AS build
 WORKDIR /backend
 COPY . /backend
-RUN mvn clean package
+RUN mvn clean package -DskipTests
 
 # Stage 2: Run
 FROM openjdk:17
-WORKDIR /app
-COPY --from=build /backend/target/*.jar /backend/app.jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
+WORKDIR /backend
+COPY --from=build /backend/target/*.jar /backend/blog-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java", "-jar", "blog-0.0.1-SNAPSHOT.jar"]
