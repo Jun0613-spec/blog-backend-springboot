@@ -23,7 +23,7 @@ out/
 !**/src/test/**/out/
 application.properties
 src/main/resources/application.properties
-
+docker-compose.yml
 
 ### NetBeans ###
 /nbproject/private/
