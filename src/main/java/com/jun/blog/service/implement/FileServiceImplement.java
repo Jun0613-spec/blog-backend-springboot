@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class FileServiceImplement implements FileService{
     
-    @Value("${file.url}")
+    @Value("${file_url}")
     private String fileUrl;
 
     private final Cloudinary cloudinary;

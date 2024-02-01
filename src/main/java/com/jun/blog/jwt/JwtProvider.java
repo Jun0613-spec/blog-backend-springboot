@@ -15,7 +15,7 @@ import io.jsonwebtoken.security.Keys;
 @Component
 public class JwtProvider {
     
-    @Value("${jwt.secret}")
+    @Value("${jwt_secret}")
     private String secret;
 
     public String create(String email) {
