@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -30,14 +30,14 @@ public class WebSecurityConfig {
    protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
     http
     .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-    .csrf(csrf->csrf.disable())
+    .csrf(csrf -> csrf.disable())
     .httpBasic(httpBasic -> httpBasic.disable())
     .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
     .authorizeHttpRequests(request -> request
             .requestMatchers("/","/api/v1/auth/**", "/api/v1/search/**","/file/**").permitAll()
             .requestMatchers(HttpMethod.GET,"/api/v1/post/**", "/api/v1/user/*").permitAll()
             .anyRequest().authenticated())
-            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+            .addFilterBefore(jwtAuthenticationFilter, BasicAuthenticationFilter.class);
 
    return http.build();
 
