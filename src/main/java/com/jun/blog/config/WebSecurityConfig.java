@@ -35,7 +35,8 @@ public class WebSecurityConfig{
     .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
     .authorizeHttpRequests(request -> request
             .requestMatchers("/","/api/v1/auth/**", "/api/v1/search/**","/file/upload").permitAll()
-            .requestMatchers(HttpMethod.GET,"/api/v1/post/**", "/api/v1/user/*").permitAll()
+            .requestMatchers(HttpMethod.GET,"/**","/api/v1/post/**", "/api/v1/user/*").permitAll()
+            .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
             .anyRequest().authenticated())
             .addFilterBefore(jwtAuthenticationFilter, BasicAuthenticationFilter.class);
 
@@ -48,8 +49,8 @@ public class WebSecurityConfig{
 
     CorsConfiguration configuration = new CorsConfiguration();
     configuration.setAllowedOrigins(Arrays.asList("*", "http://localhost:3000", "https://blog-frontend-one-hazel.vercel.app"));
-    configuration.setAllowedMethods(Arrays.asList("*", "http://localhost:3000", "https://blog-frontend-one-hazel.vercel.app"));
-    configuration.setAllowedHeaders(Arrays.asList("*", "http://localhost:3000", "https://blog-frontend-one-hazel.vercel.app"));
+    configuration.setAllowedMethods(Arrays.asList("*" ));
+    configuration.setAllowedHeaders(Arrays.asList("*"));
     
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", configuration);

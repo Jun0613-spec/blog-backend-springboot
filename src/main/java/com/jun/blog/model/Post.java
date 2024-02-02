@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jun.blog.dto.request.post.PostRequestDto;
 import com.jun.blog.dto.request.post.UpdatePostRequestDto;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
