@@ -54,7 +54,6 @@ public class WebSecurityConfig{
     
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", configuration);
-    source.registerCorsConfiguration("/file/upload", configuration);
 
     return source;
     }
