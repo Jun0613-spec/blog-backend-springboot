@@ -35,7 +35,7 @@ public class WebSecurityConfig {
     .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
     .authorizeHttpRequests(request -> request
             .requestMatchers("/","/api/v1/auth/**", "/api/v1/search/**","/file/**").permitAll()
-            .requestMatchers(HttpMethod.GET,"/api/v1/post/**", "/api/v1/user/*").permitAll()
+            .requestMatchers(HttpMethod.GET,"/ap1/v1/post/list/**","/api/v1/post/**", "/api/v1/user/*").permitAll()
             .anyRequest().authenticated())
             .addFilterBefore(jwtAuthenticationFilter, BasicAuthenticationFilter.class);
 
@@ -47,7 +47,7 @@ public class WebSecurityConfig {
     protected CorsConfigurationSource corsConfigurationSource() {
 
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.setAllowedOrigins(Arrays.asList("*", "http://localhost:3000", "https://blog-frontend-7mb4worio-jun0613-spec.vercel.app"));
+    configuration.setAllowedOrigins(Arrays.asList("*", "http://localhost:3000", "https://blog-frontend-one-hazel.vercel.app"));
     configuration.setAllowedMethods(Arrays.asList("*"));
     configuration.setAllowedHeaders(Arrays.asList("*"));
     
