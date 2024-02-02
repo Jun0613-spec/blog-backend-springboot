@@ -2,6 +2,7 @@ package com.jun.blog.controller;
 
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/file")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "https://blog-frontend-one-hazel.vercel.app")
 public class FileController {
 
     private final FileService fileService;

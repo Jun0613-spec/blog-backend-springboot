@@ -22,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class WebSecurityConfig {
+public class WebSecurityConfig{
 
    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
