@@ -7,12 +7,11 @@ import org.springframework.stereotype.Repository;
 import com.jun.blog.model.Post;
 import com.jun.blog.repository.resultSet.GetPostResultSet;
 
+
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {
 
     boolean existsByPostId(Integer postId);
-    
-    //Post findPostByPostId(Integer postId);
 
     Post findByPostId(Integer postId);
 

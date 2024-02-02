@@ -9,6 +9,7 @@ import com.jun.blog.dto.response.ResponseDto;
 import com.jun.blog.model.User;
 import com.jun.blog.repository.UserRepository;
 import com.jun.blog.service.UserService;
+
 import com.jun.blog.dto.response.user.GetSignInUserResponseDto;
 import com.jun.blog.dto.response.user.GetUserResponseDto;
 import com.jun.blog.dto.response.user.UpdateProfileImageResponseDto;
@@ -21,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 public class UserServiceImplement implements UserService{
 
     private final UserRepository userRepository;
-    
+
     @Override
     public ResponseEntity<? super GetSignInUserResponseDto> getSignInUser(String email) {
 
@@ -104,4 +105,5 @@ public class UserServiceImplement implements UserService{
         return UpdateProfileImageResponseDto.success();
        
     }
+    
 }
