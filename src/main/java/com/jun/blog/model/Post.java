@@ -41,7 +41,7 @@ public class Post {
     private Integer commentCount;
     private String postEmail;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
