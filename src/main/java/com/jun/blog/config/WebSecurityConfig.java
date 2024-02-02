@@ -34,7 +34,7 @@ public class WebSecurityConfig{
     .httpBasic(httpBasic -> httpBasic.disable())
     .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
     .authorizeHttpRequests(request -> request
-            .requestMatchers("/","/api/v1/auth/**", "/api/v1/search/**","/file/upload", "/file/upload/**").permitAll()
+            .requestMatchers("/","/api/v1/auth/**", "/api/v1/search/**","/file/upload").permitAll()
             .requestMatchers(HttpMethod.GET,"/**","/api/v1/post/**", "/api/v1/user/**").permitAll()
             .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
             .requestMatchers(HttpMethod.POST,"/**").permitAll()
