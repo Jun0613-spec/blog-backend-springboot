@@ -37,7 +37,6 @@ public class WebSecurityConfig{
             .requestMatchers("/","/api/v1/auth/**", "/api/v1/search/**","/file/upload").permitAll()
             .requestMatchers(HttpMethod.GET,"/**","/api/v1/post/**", "/api/v1/user/**").permitAll()
             .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-            .requestMatchers(HttpMethod.POST,"/**").permitAll()
             .anyRequest().authenticated())
             .addFilterBefore(jwtAuthenticationFilter, BasicAuthenticationFilter.class);
 
