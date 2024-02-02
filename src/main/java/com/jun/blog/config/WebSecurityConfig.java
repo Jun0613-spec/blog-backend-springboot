@@ -50,7 +50,7 @@ public class WebSecurityConfig{
 
     CorsConfiguration configuration = new CorsConfiguration();
     configuration.setAllowedOrigins(Arrays.asList("*", "http://localhost:3000", "https://blog-frontend-one-hazel.vercel.app"));
-    configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE","OPTIONS"));
+    configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE","OPTIONS","PATCH"));
     configuration.setAllowedHeaders(Arrays.asList("Authorization", "Requestor-Type","Content-Type"));
     
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
