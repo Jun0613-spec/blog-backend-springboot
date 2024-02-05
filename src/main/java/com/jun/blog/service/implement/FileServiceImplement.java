@@ -1,5 +1,6 @@
 package com.jun.blog.service.implement;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -11,6 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.jun.blog.service.FileService;
 
+import io.jsonwebtoken.io.IOException;
+
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 
@@ -20,8 +23,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class FileServiceImplement implements FileService{
     
-    // @Value("${file_url}")
-    // private String fileUrl;
+    @Value("${file_url}")
+    private String fileUrl;
 
     private final Cloudinary cloudinary;
 
@@ -41,7 +44,7 @@ public class FileServiceImplement implements FileService{
 
     // }
 
-    // @Override
+     // @Override
     // public Resource getImage(String fileName) {
        
     //     Resource resource = null;
@@ -57,33 +60,43 @@ public class FileServiceImplement implements FileService{
     //     return resource;
     // }
 
+//     @Override
+// public String upload(MultipartFile file) {
+//     try {
+//         String publicId = UUID.randomUUID().toString();
+//         return cloudinary.url().secure(true).generate(publicId);
+
+//     } catch (IOException e) {
+//         e.printStackTrace();
+//         throw new RuntimeException("Image uploading failed.", e);
+//     }
+// }
+
     @Override
     public String upload(MultipartFile file) {
         try {
-            return cloudinary.uploader()
-                .upload(file.getBytes(),
-                        ObjectUtils.asMap(
-                                "public_id", UUID.randomUUID().toString(),
-                                "secure", true 
-                        ))
-                .get("url")
-                .toString();
+            Map<String, Object> options = new HashMap<>();
+            options.put("secure", true);
+
+            byte[] fileBytes = file.getBytes();
+            Map<String, Object> uploadResult = cloudinary.uploader().upload(fileBytes, options);
+            return (String) uploadResult.get("secure_url");
+
         } catch (Exception e) {
-        throw new RuntimeException("Image uploading failed.");
+        e.printStackTrace();
+        throw new RuntimeException("Image uploading failed.", e);
         }
     }
 
     @Override
-    public Resource getImage( String fileName) {
-
-    try {
-        
-        String imageUrl = cloudinary.url().generate(fileName);
+    public Resource getImage(String fileName) {
+        try {
+        String imageUrl = cloudinary.url().secure(true).generate(fileName);
         return new UrlResource(imageUrl);
-      } catch (Exception exception) {
+        } catch (Exception exception) {
         exception.printStackTrace();
         return null;
-      }
+        }
     }
-    
+
 }
