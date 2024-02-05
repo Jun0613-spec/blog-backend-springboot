@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.jun.blog.service.FileService;
 
 import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,21 +25,21 @@ public class FileServiceImplement implements FileService{
 
     private final Cloudinary cloudinary;
 
-    @Override
-    public String upload(MultipartFile file) {
+    // @Override
+    // public String upload(MultipartFile file) {
 
-       try {
-          return cloudinary.uploader()
-          .upload(file.getBytes(),
-                  Map.of("public_id", UUID.randomUUID().toString()))
-          .get("url")
-          .toString();
+    //    try {
+    //       return cloudinary.uploader()
+    //       .upload(file.getBytes(),
+    //               Map.of("public_id", UUID.randomUUID().toString()))
+    //       .get("url")
+    //       .toString();
 
-       } catch (Exception e) {
-         throw new RuntimeException("Image uploading fail.");
-       }
+    //    } catch (Exception e) {
+    //      throw new RuntimeException("Image uploading fail.");
+    //    }
 
-    }
+    // }
 
     // @Override
     // public Resource getImage(String fileName) {
@@ -55,6 +56,22 @@ public class FileServiceImplement implements FileService{
         
     //     return resource;
     // }
+
+    @Override
+    public String upload(MultipartFile file) {
+        try {
+            return cloudinary.uploader()
+                .upload(file.getBytes(),
+                        ObjectUtils.asMap(
+                                "public_id", UUID.randomUUID().toString(),
+                                "secure", true 
+                        ))
+                .get("url")
+                .toString();
+        } catch (Exception e) {
+        throw new RuntimeException("Image uploading failed.");
+        }
+    }
 
     @Override
     public Resource getImage( String fileName) {
