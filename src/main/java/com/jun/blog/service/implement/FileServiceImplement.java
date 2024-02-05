@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jun.blog.service.FileService;
+
 import com.cloudinary.Cloudinary;
 
 import lombok.RequiredArgsConstructor;
@@ -18,8 +19,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class FileServiceImplement implements FileService{
     
-    @Value("${file_url}")
-    private String fileUrl;
+    // @Value("${file_url}")
+    // private String fileUrl;
 
     private final Cloudinary cloudinary;
 
@@ -39,20 +40,33 @@ public class FileServiceImplement implements FileService{
 
     }
 
-    @Override
-    public Resource getImage(String fileName) {
+    // @Override
+    // public Resource getImage(String fileName) {
        
-        Resource resource = null;
+    //     Resource resource = null;
 
-        try {
-            resource = new  UrlResource(fileUrl + fileName);
+    //     try {
+    //         resource = new UrlResource(fileUrl + fileName);
             
-        } catch (Exception exception) {
-            exception.printStackTrace();
-            return null;
-        }
+    //     } catch (Exception exception) {
+    //         exception.printStackTrace();
+    //         return null;
+    //     }
         
-        return resource;
+    //     return resource;
+    // }
+
+    @Override
+    public Resource getImage( String fileName) {
+
+    try {
+        
+        String imageUrl = cloudinary.url().generate(fileName);
+        return new UrlResource(imageUrl);
+      } catch (Exception exception) {
+        exception.printStackTrace();
+        return null;
+      }
     }
     
 }
