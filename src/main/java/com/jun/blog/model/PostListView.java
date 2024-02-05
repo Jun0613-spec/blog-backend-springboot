@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,6 +39,7 @@ import lombok.Setter;
 "ON P.user_id = U.user_id " +
 "LEFT JOIN (SELECT post_id, ANY_VALUE(image) AS image FROM image GROUP BY post_id) AS I " +
 "ON P.post_id = I.post_id") 
+@Table(name="post_list_view")
 public class PostListView {
 
     @Id
