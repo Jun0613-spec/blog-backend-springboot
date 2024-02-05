@@ -9,6 +9,7 @@ This is the repository for the backend of a Full Stack blog app.
 ![MySQL](https://img.shields.io/badge/mysql-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)
 ![Spring Security](https://img.shields.io/badge/spring_security-6-6DB33F?style=flat-square&logo=spring&logoColor=white)
 ![JWT](https://img.shields.io/badge/jwt-0.11.5-000000?style=flat-square&logo=json-web-tokens&logoColor=white)
+![Cloudinary](https://img.shields.io/badge/cloudinary-latest-4084A1?style=flat-square&logo=cloudinary&logoColor=white)
 
 ### Live Demo
 
