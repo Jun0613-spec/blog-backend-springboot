@@ -12,65 +12,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.jun.blog.service.FileService;
 
-import io.jsonwebtoken.io.IOException;
-
 import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class FileServiceImplement implements FileService{
-    
-    @Value("${file_url}")
-    private String fileUrl;
 
     private final Cloudinary cloudinary;
-
-    // @Override
-    // public String upload(MultipartFile file) {
-
-    //    try {
-    //       return cloudinary.uploader()
-    //       .upload(file.getBytes(),
-    //               Map.of("public_id", UUID.randomUUID().toString()))
-    //       .get("url")
-    //       .toString();
-
-    //    } catch (Exception e) {
-    //      throw new RuntimeException("Image uploading fail.");
-    //    }
-
-    // }
-
-     // @Override
-    // public Resource getImage(String fileName) {
-       
-    //     Resource resource = null;
-
-    //     try {
-    //         resource = new UrlResource(fileUrl + fileName);
-            
-    //     } catch (Exception exception) {
-    //         exception.printStackTrace();
-    //         return null;
-    //     }
-        
-    //     return resource;
-    // }
-
-//     @Override
-// public String upload(MultipartFile file) {
-//     try {
-//         String publicId = UUID.randomUUID().toString();
-//         return cloudinary.url().secure(true).generate(publicId);
-
-//     } catch (IOException e) {
-//         e.printStackTrace();
-//         throw new RuntimeException("Image uploading failed.", e);
-//     }
-// }
 
     @Override
     public String upload(MultipartFile file) {
