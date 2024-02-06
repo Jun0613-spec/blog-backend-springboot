@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
-@RequestMapping("/api/v1/post/list")
+@RequestMapping("/api/v1/list")
 @RequiredArgsConstructor
 public class PostListViewController {
 

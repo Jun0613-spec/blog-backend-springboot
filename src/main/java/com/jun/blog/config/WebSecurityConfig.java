@@ -1,6 +1,6 @@
 package com.jun.blog.config;
 
-import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,8 +34,8 @@ public class WebSecurityConfig{
     .httpBasic(httpBasic -> httpBasic.disable())
     .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
     .authorizeHttpRequests(request -> request
-            .requestMatchers("/","/api/v1/auth/**", "/api/v1/search/**","/file/upload","/api/v1/post/list/**").permitAll()
-            .requestMatchers(HttpMethod.GET,"/**","/api/v1/post/**", "/api/v1/user/**", "/api/v1/post/list/**").permitAll()
+            .requestMatchers("/api/v1/auth/**", "/api/v1/search/**","/file/upload").permitAll()
+            .requestMatchers(HttpMethod.GET,"/**","/api/v1/post/**", "/api/v1/user/**", "/api/v1/list/**").permitAll()
             .anyRequest().authenticated())
             .addFilterBefore(jwtAuthenticationFilter, BasicAuthenticationFilter.class);
 
@@ -47,9 +47,11 @@ public class WebSecurityConfig{
     protected CorsConfigurationSource corsConfigurationSource() {
 
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.addAllowedOrigin("*");
-    configuration.addAllowedMethod("*");
-    configuration.addAllowedHeader("*");
+    configuration.setAllowedOrigins(List.of("http://localhost:3000", "https://blog-frontend-2vmm9knjz-jun0613-spec.vercel.app", "https://blogfy0613.onrender.com"));
+    configuration.setAllowedMethods(List.of("GET","POST","DELETE","PATCH","OPTION","PUT"));
+    configuration.setAllowedHeaders(List.of("Authorization","Content-Type"));
+    configuration.setAllowCredentials(true);
+
     
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", configuration);
