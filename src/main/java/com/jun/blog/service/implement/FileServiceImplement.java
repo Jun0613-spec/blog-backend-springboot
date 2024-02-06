@@ -2,9 +2,7 @@ package com.jun.blog.service.implement;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -22,6 +20,7 @@ public class FileServiceImplement implements FileService{
 
     private final Cloudinary cloudinary;
 
+    @SuppressWarnings("unchecked")
     @Override
     public String upload(MultipartFile file) {
         try {
@@ -38,6 +37,7 @@ public class FileServiceImplement implements FileService{
         }
     }
 
+    @SuppressWarnings("null")
     @Override
     public Resource getImage(String fileName) {
         try {
