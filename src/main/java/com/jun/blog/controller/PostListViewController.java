@@ -24,13 +24,17 @@ public class PostListViewController {
 
     @GetMapping("/latest")
     public ResponseEntity<? super GetLatestPostListResponseDto> getLatestPostList() {
+        
         ResponseEntity<? super GetLatestPostListResponseDto> response = postListViewService.getLatestPostList();
+       
         return response;
     }
 
     @GetMapping("/top3")
     public ResponseEntity<? super GetTop3PostListResponseDto> getTop3PostList() {
+        
         ResponseEntity<? super GetTop3PostListResponseDto> response = postListViewService.getTop3PostList();
+        
         return response;
     }
 
@@ -38,7 +42,9 @@ public class PostListViewController {
     public ResponseEntity<? super GetSearchPostListResponseDto> getSearchPostList
     (@PathVariable("searchWord") String searchWord,
      @PathVariable(value="preSearchWord", required=false) String preSearchWord ) {
+        
         ResponseEntity<? super GetSearchPostListResponseDto> response = postListViewService.getSearchPostList(searchWord, preSearchWord);
+        
         return response;
     }
 
@@ -46,7 +52,9 @@ public class PostListViewController {
     public ResponseEntity<? super GetUserPostListResponseDto> getUserPostLIst
     (@PathVariable("userName") String userName
       ) {
+        
         ResponseEntity<? super GetUserPostListResponseDto> response = postListViewService.getUserPostList(userName);
+        
         return response;
     }
     
