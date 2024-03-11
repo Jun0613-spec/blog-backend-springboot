@@ -1,7 +1,7 @@
 
 FROM openjdk:17
 
-WORKDIR /app
+WORKDIR /backend
 COPY target/*.jar app.jar
 
 EXPOSE 8000
