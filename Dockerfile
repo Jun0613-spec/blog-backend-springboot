@@ -1,8 +1,14 @@
-FROM openjdk:17
+# Use the official Eclipse Temurin JDK 17 image as base
+FROM eclipse-temurin:17-jdk-alpine
 
-WORKDIR /backend
-COPY backend/target/blog-0.0.1-SNAPSHOT.jar app.jar
+# Set the working directory inside the container
+WORKDIR /blog2
 
+# Copy the compiled JAR file from the local machine to the container
+COPY  backend/target/*.jar app.jar
+
+# Expose port 8000 to the outside world
 EXPOSE 8000
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Command to run the application when the container starts
+CMD ["java", "-jar", "app.jar"]
