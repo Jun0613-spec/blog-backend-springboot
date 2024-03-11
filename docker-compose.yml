@@ -25,7 +25,6 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_USERNAME=${MYSQL_USERNAME}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
