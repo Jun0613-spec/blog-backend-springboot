@@ -2,7 +2,7 @@
 FROM openjdk:17
 
 WORKDIR /backend
-COPY target/*.jar app.jar
+COPY target/blog-0.0.1-SNAPSHOT app.jar
 
 EXPOSE 8000
 
