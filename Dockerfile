@@ -1,12 +1,31 @@
 # Stage 1: Build the application
 FROM maven:3.8.3-openjdk-17 AS build
-WORKDIR /backend
+WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
 
 FROM openjdk:17
-WORKDIR /backend
-COPY --from=build /backend/target/*.jar /target/app.jar
+WORKDIR /app
+COPY --from=build /app/target/*.jar /app/app.jar
 EXPOSE 8000
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+
+# FROM maven:3.8.3-openjdk-17 AS build
+# WORKDIR /app
+# COPY backend/pom.xml .
+# RUN mvn dependency:go-offline
+# COPY backend/src ./src
+# RUN mvn package -DskipTests
+
+
+# FROM openjdk:17-alpine
+# WORKDIR /app
+
+# COPY --from=build /app/target/*.jar /app/app.jar
+
+# EXPOSE 8000
+
+# CMD ["java", "-jar", "app.jar"]
