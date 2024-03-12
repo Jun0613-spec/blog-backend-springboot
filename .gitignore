@@ -24,7 +24,7 @@ out/
 application.properties
 src/main/resources/application.properties
 .env
-Dockerfile
+
 docker-compose.yml
 
 ### NetBeans ###
