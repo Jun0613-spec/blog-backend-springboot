@@ -1,15 +1,12 @@
+# Stage 1: Build the application
 FROM maven:3.8.3-openjdk-17 AS build
-WORKDIR /app
-
-RUN mvn dependency:go-offline
-
+WORKDIR /backend
 COPY . .
-
 RUN mvn clean package -e -X
 
 
 FROM openjdk:17
-WORKDIR /app
-COPY --from=build /app/target/*.jar /app/app.jar
+WORKDIR /backend
+COPY --from=build /backend/target/*.jar /target/app.jar
 EXPOSE 8000
 ENTRYPOINT ["java", "-jar", "app.jar"]
