@@ -7,9 +7,9 @@ RUN mvn clean package -DskipTests
 
 FROM openjdk:17
 WORKDIR /app
-COPY --from=build /app/target/*.jar /app/app.jar
+COPY --from=build /app/target/blog-0.0.1-SNAPSHOT.jar /app/blog-0.0.1-SNAPSHOT.jar
 EXPOSE 8000
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "blog-0.0.1-SNAPSHOT.jar"]
 
 
 
