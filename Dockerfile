@@ -7,7 +7,6 @@ RUN mvn clean package -DskipTests
 
 FROM openjdk:17
 WORKDIR /app
-ADD /target/classes/application.properties /app/application.propertiess
 COPY --from=build /app/target/blog-0.0.1-SNAPSHOT.jar /app/blog-0.0.1-SNAPSHOT.jar
 EXPOSE 8000
 ENTRYPOINT ["java", "-jar", "blog-0.0.1-SNAPSHOT.jar"]
