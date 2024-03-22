@@ -2,6 +2,7 @@ package com.jun.blog.model;
 
 import com.jun.blog.dto.request.auth.SignUpRequestDto;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +23,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="user_id")
     private Integer userId; 
 
     private String email;

@@ -8,9 +8,9 @@ import com.jun.blog.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
 
-   boolean existsByUserId(Integer userId);
-
    boolean existsByEmail(String email);
+
+   boolean existsByUserId(Integer userId);
 
    boolean existsByUserName(String userName);
    
